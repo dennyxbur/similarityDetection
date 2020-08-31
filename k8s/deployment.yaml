@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: similarity
+  namespace: fastai
+spec:
+  selector:
+    matchLabels:
+      app: similarity-app
+      tier: api
+  template:
+    metadata:
+      labels:
+        app: similarity-app
+        tier: api
+    spec:
+      containers:
+        - name: similarity
+          image: gcr.io/apis-test-at/similarity:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 5531

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: similarity
+  namespace: fastai
+spec:
+  type: LoadBalancer
+  selector:
+    app: similarity-app
+    tier: api
+  ports:
+    - name: http
+      protocol: TCP
+      port: 5531
+      targetPort: 5531
